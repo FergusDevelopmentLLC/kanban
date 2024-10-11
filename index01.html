@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
-  <!-- Google Font for Patrick Hand -->
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <title>WIT Kanban</title> <!-- Updated the title here -->
+
+  <!-- Google Font for Nunito -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
   <!-- SortableJS for drag-and-drop functionality -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+
   <style>
       body {
-          font-family: 'Patrick Hand', cursive; /* Apply Patrick Hand to the whole board */
+          font-family: 'Nunito', sans-serif; /* Apply Nunito for readability */
           background-color: #007b8e;
           display: flex;
           flex-direction: column;
@@ -45,7 +48,7 @@
 
       .kanban-column h2 {
           text-align: center;
-          font-size: 1.75em;
+          font-size: 1.5em;
           padding: 10px;
           color: #fff;
           border-radius: 5px;
@@ -77,6 +80,19 @@
           color: #333;
       }
 
+      /* Muted lift level colors */
+      .kanban-task.high-lift {
+          background-color: #f8d7da; /* Muted light red for high lift */
+      }
+
+      .kanban-task.medium-lift {
+          background-color: #ffe5d4; /* Muted soft peach for medium lift */
+      }
+
+      .kanban-task.low-lift {
+          background-color: #e6f7e6; /* Muted pale mint green for low lift */
+      }
+
       .circle {
           width: 30px;
           height: 30px;
@@ -86,11 +102,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 16px; /* Increase the font size to make text more readable */
+          font-size: 16px;
           font-weight: bold;
           color: white;
       }
-
 
       /* Custom colors for task types */
       .circle.frontend { background-color: #4caf50; }
@@ -102,12 +117,10 @@
           opacity: 0.5;
           background-color: #e0e0e0;
       }
-
-
-
   </style>
 </head>
 <body>
+<h1 class="kanban-header">WIT Kanban</h1> <!-- Updated the heading here -->
 <div class="kanban-board">
   <div class="kanban-column backlog">
     <h2>Backlog</h2>
