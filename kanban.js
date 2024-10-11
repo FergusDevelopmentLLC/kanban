@@ -2,26 +2,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // Sample JSON data for the board
   const data = {
     tasks: [
-      { id: 1, title: "Research new data visualization tools", status: "backlog", type: "unknown" },
-      { id: 2, title: "Investigate customer pain points", status: "backlog", type: "unknown" },
-      { id: 3, title: "Explore AI/ML integration", status: "backlog", type: "unknown" },
-      { id: 4, title: "Evaluate cloud service providers", status: "backlog", type: "unknown" },
-      { id: 5, title: "Assess alternative authentication methods", status: "backlog", type: "unknown" },
-      { id: 6, title: "Set up load balancer for production servers", status: "doing", type: "infrastructure" },
-      { id: 7, title: "Configure automated backups for critical databases", status: "doing", type: "infrastructure" },
-      { id: 8, title: "Implement server-side caching", status: "doing", type: "infrastructure" },
-      { id: 9, title: "Optimize server monitoring system", status: "review", type: "infrastructure" },
-      { id: 10, title: "Update SSL certificates across all environments", status: "done", type: "infrastructure" },
-      { id: 11, title: "Ingest monthly sales data from external API", status: "doing", type: "database" },
-      { id: 12, title: "Design and populate customer segmentation tables", status: "doing", type: "database" },
-      { id: 13, title: "Optimize query performance for reporting views", status: "review", type: "database" },
-      { id: 14, title: "Write a stored procedure for handling bulk updates", status: "review", type: "database" },
-      { id: 15, title: "Create a trigger for real-time order tracking", status: "done", type: "database" },
-      { id: 16, title: "Build dashboard for displaying real-time sales data", status: "doing", type: "frontend" },
-      { id: 17, title: "Implement search functionality for the user directory", status: "doing", type: "frontend" },
-      { id: 18, title: "Integrate interactive data charts", status: "review", type: "frontend" },
-      { id: 19, title: "Enhance mobile responsiveness of user profile pages", status: "review", type: "frontend" },
-      { id: 20, title: "Refactor front-end code for improved performance", status: "done", type: "frontend" }
+      { id: 1, title: "Research new data visualization tools", status: "backlog", type: "unknown", lift: "high" },
+      { id: 2, title: "Investigate customer pain points", status: "backlog", type: "unknown", lift: "medium" },
+      { id: 3, title: "Explore AI/ML integration", status: "backlog", type: "unknown", lift: "low" },
+      { id: 4, title: "Evaluate cloud service providers", status: "backlog", type: "unknown", lift: "high" },
+      { id: 5, title: "Assess alternative authentication methods", status: "backlog", type: "unknown", lift: "medium" },
+      { id: 6, title: "Set up load balancer for production servers", status: "doing", type: "infrastructure", lift: "high" },
+      { id: 7, title: "Configure automated backups for critical databases", status: "doing", type: "infrastructure", lift: "medium" },
+      { id: 8, title: "Implement server-side caching", status: "doing", type: "infrastructure", lift: "low" },
+      { id: 9, title: "Optimize server monitoring system", status: "review", type: "infrastructure", lift: "medium" },
+      { id: 10, title: "Update SSL certificates across all environments", status: "done", type: "infrastructure", lift: "low" },
+      { id: 11, title: "Ingest monthly sales data from external API", status: "doing", type: "database", lift: "high" },
+      { id: 12, title: "Design and populate customer segmentation tables", status: "doing", type: "database", lift: "medium" },
+      { id: 13, title: "Optimize query performance for reporting views", status: "review", type: "database", lift: "high" },
+      { id: 14, title: "Write a stored procedure for handling bulk updates", status: "review", type: "database", lift: "medium" },
+      { id: 15, title: "Create a trigger for real-time order tracking", status: "done", type: "database", lift: "low" },
+      { id: 16, title: "Build dashboard for displaying real-time sales data", status: "doing", type: "frontend", lift: "high" },
+      { id: 17, title: "Implement search functionality for the user directory", status: "doing", type: "frontend", lift: "medium" },
+      { id: 18, title: "Integrate interactive data charts", status: "review", type: "frontend", lift: "high" },
+      { id: 19, title: "Enhance mobile responsiveness of user profile pages", status: "review", type: "frontend", lift: "medium" },
+      { id: 20, title: "Refactor front-end code for improved performance", status: "done", type: "frontend", lift: "low" }
     ]
   };
 
@@ -43,6 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskElement = document.createElement("li");
       taskElement.classList.add("kanban-task");
       taskElement.dataset.taskId = task.id; // Store the task ID for identification
+
+      // Apply background color based on lift level
+      if (task.lift === "high") {
+        taskElement.classList.add("high-lift");
+      } else if (task.lift === "medium") {
+        taskElement.classList.add("medium-lift");
+      } else if (task.lift === "low") {
+        taskElement.classList.add("low-lift");
+      }
 
       // Determine label and color class based on task type
       let circleColorClass = "";
